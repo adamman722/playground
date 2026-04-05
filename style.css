@@ -411,6 +411,19 @@ body {
   background: #6366f1;
 }
 
+/* ── Modal screens ── */
+.modal-screen {
+  display: none;
+}
+
+.modal-screen.active {
+  display: block;
+}
+
+.modal-screen--success {
+  text-align: center;
+}
+
 /* ── Review modal ── */
 .review-photo {
   display: flex;

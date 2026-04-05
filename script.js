@@ -139,14 +139,55 @@ allCards.forEach((card) => {
 });
 
 // ── Modal ─────────────────────────────────────────────────────
-const modalOverlay = document.getElementById("modalOverlay");
-const modalCancel  = document.getElementById("modalCancel");
-const infoForm     = document.getElementById("infoForm");
+const modalOverlay   = document.getElementById("modalOverlay");
+const infoForm       = document.getElementById("infoForm");
+const step1El        = document.getElementById("step1");
+const step2El        = document.getElementById("step2");
+const stepLineEl     = document.getElementById("stepLine");
+
+let orderPayload = null;
+
+// Stepper states: info | review | success
+function setStep(name) {
+  const bubble1 = step1El.querySelector(".stepper-bubble");
+  const bubble2 = step2El.querySelector(".stepper-bubble");
+
+  step1El.className   = "stepper-step";
+  step2El.className   = "stepper-step";
+  stepLineEl.className = "stepper-line";
+
+  document.querySelectorAll(".modal-screen").forEach(s => s.classList.remove("active"));
+
+  if (name === "info") {
+    step1El.classList.add("active");
+    bubble1.innerHTML = "1";
+    bubble2.innerHTML = "2";
+    document.getElementById("screenInfo").classList.add("active");
+    infoForm.querySelector("input").focus();
+  } else if (name === "review") {
+    step1El.classList.add("completed");
+    bubble1.innerHTML = "&#10003;";
+    stepLineEl.classList.add("completed");
+    step2El.classList.add("active");
+    bubble2.innerHTML = "2";
+    document.getElementById("screenReview").classList.add("active");
+  } else if (name === "success") {
+    step1El.classList.add("completed");
+    bubble1.innerHTML = "&#10003;";
+    stepLineEl.classList.add("completed");
+    step2El.classList.add("completed");
+    bubble2.innerHTML = "&#10003;";
+    // Hide stepper on success screen
+    document.querySelector(".stepper").style.display = "none";
+    document.getElementById("screenSuccess").classList.add("active");
+  }
+}
 
 function openModal() {
+  document.querySelector(".stepper").style.display = "";
   modalOverlay.classList.add("open");
   modalOverlay.setAttribute("aria-hidden", "false");
-  infoForm.querySelector("input").focus();
+  setStep("info");
 }
 
 function closeModal() {
@@ -157,22 +198,20 @@ function closeModal() {
 }
 
 submitBtn.addEventListener("click", openModal);
-modalCancel.addEventListener("click", closeModal);
+document.getElementById("modalCancel").addEventListener("click", closeModal);
 
-// Close on backdrop click
 modalOverlay.addEventListener("click", e => {
   if (e.target === modalOverlay) closeModal();
 });
 
-// Close on Escape
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && modalOverlay.classList.contains("open")) closeModal();
 });
 
+// Step 1 → Step 2
 infoForm.addEventListener("submit", e => {
   e.preventDefault();
 
-  // Validate all required fields
   let valid = true;
   infoForm.querySelectorAll("input[required]").forEach(input => {
     if (!input.value.trim()) {
@@ -184,7 +223,7 @@ infoForm.addEventListener("submit", e => {
   });
   if (!valid) return;
 
-  const payload = {
+  orderPayload = {
     selection:     selectedCard,
     firstName:     infoForm.firstName.value.trim(),
     lastName:      infoForm.lastName.value.trim(),
@@ -194,61 +233,25 @@ infoForm.addEventListener("submit", e => {
     zip:           infoForm.zip.value.trim(),
   };
 
-  closeModal();
-  openReview(payload);
+  document.getElementById("reviewImg").src                   = orderPayload.selection.src;
+  document.getElementById("reviewImg").alt                   = orderPayload.selection.label;
+  document.getElementById("reviewPhotoLabel").textContent    = orderPayload.selection.label;
+  document.getElementById("reviewName").textContent          = `${orderPayload.firstName} ${orderPayload.lastName}`;
+  document.getElementById("reviewAddress").textContent       = orderPayload.streetAddress;
+  document.getElementById("reviewCityStateZip").textContent  = `${orderPayload.city}, ${orderPayload.state} ${orderPayload.zip}`;
+
+  setStep("review");
 });
 
-// ── Review modal ──────────────────────────────────────────────
-const reviewOverlay    = document.getElementById("reviewOverlay");
-const reviewBack       = document.getElementById("reviewBack");
-const confirmOrderBtn  = document.getElementById("confirmOrderBtn");
+// Step 2 → Step 1
+document.getElementById("reviewBack").addEventListener("click", () => setStep("info"));
 
-function openReview(payload) {
-  document.getElementById("reviewImg").src          = payload.selection.src;
-  document.getElementById("reviewImg").alt          = payload.selection.label;
-  document.getElementById("reviewPhotoLabel").textContent = payload.selection.label;
-  document.getElementById("reviewName").textContent        = `${payload.firstName} ${payload.lastName}`;
-  document.getElementById("reviewAddress").textContent     = payload.streetAddress;
-  document.getElementById("reviewCityStateZip").textContent = `${payload.city}, ${payload.state} ${payload.zip}`;
-
-  reviewOverlay.classList.add("open");
-  reviewOverlay.setAttribute("aria-hidden", "false");
-
-  // Store payload for final confirm
-  reviewOverlay._payload = payload;
-}
-
-function closeReview() {
-  reviewOverlay.classList.remove("open");
-  reviewOverlay.setAttribute("aria-hidden", "true");
-}
-
-// "Back" reopens the info form
-reviewBack.addEventListener("click", () => {
-  closeReview();
-  openModal();
-});
-
-confirmOrderBtn.addEventListener("click", () => {
-  const payload = reviewOverlay._payload;
+// Step 2 → Step 3
+document.getElementById("confirmOrderBtn").addEventListener("click", () => {
   // Ready for submission — wire this to your API as needed.
-  console.log("Order confirmed:", payload);
-  closeReview();
-  openSuccess();
+  console.log("Order confirmed:", orderPayload);
+  setStep("success");
 });
 
-// ── Success modal ─────────────────────────────────────────────
-const successOverlay = document.getElementById("successOverlay");
-const successClose   = document.getElementById("successClose");
-
-function openSuccess() {
-  successOverlay.classList.add("open");
-  successOverlay.setAttribute("aria-hidden", "false");
-}
-
-function closeSuccess() {
-  successOverlay.classList.remove("open");
-  successOverlay.setAttribute("aria-hidden", "true");
-}
-
-successClose.addEventListener("click", closeSuccess);
+// Close on Done
+document.getElementById("successClose").addEventListener("click", closeModal);
