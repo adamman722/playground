@@ -138,8 +138,117 @@ allCards.forEach((card) => {
   });
 });
 
-submitBtn.addEventListener("click", () => {
-  // Ready for submission — wire this to your API/form as needed.
-  console.log("Submitting selection:", selectedCard);
-  alert(`Submitting: ${selectedCard.label}`);
+// ── Modal ─────────────────────────────────────────────────────
+const modalOverlay = document.getElementById("modalOverlay");
+const modalCancel  = document.getElementById("modalCancel");
+const infoForm     = document.getElementById("infoForm");
+
+function openModal() {
+  modalOverlay.classList.add("open");
+  modalOverlay.setAttribute("aria-hidden", "false");
+  infoForm.querySelector("input").focus();
+}
+
+function closeModal() {
+  modalOverlay.classList.remove("open");
+  modalOverlay.setAttribute("aria-hidden", "true");
+  infoForm.reset();
+  infoForm.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
+}
+
+submitBtn.addEventListener("click", openModal);
+modalCancel.addEventListener("click", closeModal);
+
+// Close on backdrop click
+modalOverlay.addEventListener("click", e => {
+  if (e.target === modalOverlay) closeModal();
 });
+
+// Close on Escape
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modalOverlay.classList.contains("open")) closeModal();
+});
+
+infoForm.addEventListener("submit", e => {
+  e.preventDefault();
+
+  // Validate all required fields
+  let valid = true;
+  infoForm.querySelectorAll("input[required]").forEach(input => {
+    if (!input.value.trim()) {
+      input.classList.add("invalid");
+      valid = false;
+    } else {
+      input.classList.remove("invalid");
+    }
+  });
+  if (!valid) return;
+
+  const payload = {
+    selection:     selectedCard,
+    firstName:     infoForm.firstName.value.trim(),
+    lastName:      infoForm.lastName.value.trim(),
+    streetAddress: infoForm.streetAddress.value.trim(),
+    city:          infoForm.city.value.trim(),
+    state:         infoForm.state.value.trim(),
+    zip:           infoForm.zip.value.trim(),
+  };
+
+  closeModal();
+  openReview(payload);
+});
+
+// ── Review modal ──────────────────────────────────────────────
+const reviewOverlay    = document.getElementById("reviewOverlay");
+const reviewBack       = document.getElementById("reviewBack");
+const confirmOrderBtn  = document.getElementById("confirmOrderBtn");
+
+function openReview(payload) {
+  document.getElementById("reviewImg").src          = payload.selection.src;
+  document.getElementById("reviewImg").alt          = payload.selection.label;
+  document.getElementById("reviewPhotoLabel").textContent = payload.selection.label;
+  document.getElementById("reviewName").textContent        = `${payload.firstName} ${payload.lastName}`;
+  document.getElementById("reviewAddress").textContent     = payload.streetAddress;
+  document.getElementById("reviewCityStateZip").textContent = `${payload.city}, ${payload.state} ${payload.zip}`;
+
+  reviewOverlay.classList.add("open");
+  reviewOverlay.setAttribute("aria-hidden", "false");
+
+  // Store payload for final confirm
+  reviewOverlay._payload = payload;
+}
+
+function closeReview() {
+  reviewOverlay.classList.remove("open");
+  reviewOverlay.setAttribute("aria-hidden", "true");
+}
+
+// "Back" reopens the info form
+reviewBack.addEventListener("click", () => {
+  closeReview();
+  openModal();
+});
+
+confirmOrderBtn.addEventListener("click", () => {
+  const payload = reviewOverlay._payload;
+  // Ready for submission — wire this to your API as needed.
+  console.log("Order confirmed:", payload);
+  closeReview();
+  openSuccess();
+});
+
+// ── Success modal ─────────────────────────────────────────────
+const successOverlay = document.getElementById("successOverlay");
+const successClose   = document.getElementById("successClose");
+
+function openSuccess() {
+  successOverlay.classList.add("open");
+  successOverlay.setAttribute("aria-hidden", "false");
+}
+
+function closeSuccess() {
+  successOverlay.classList.remove("open");
+  successOverlay.setAttribute("aria-hidden", "true");
+}
+
+successClose.addEventListener("click", closeSuccess);
