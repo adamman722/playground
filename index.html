@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="carousel-track-container">
+        <ul class="carousel-track"></ul>
+      </div>
+
+      <button
+        class="carousel-btn carousel-btn--left"
+        aria-label="Previous slide"
+      >
+        &#8249;
+      </button>
+      <button class="carousel-btn carousel-btn--right" aria-label="Next slide">
+        &#8250;
+      </button>
+
+      <div class="carousel-dots"></div>
+    </div>
+
+    <div class="submit-bar">
+      <span class="submit-count">0 selected</span>
+      <button class="submit-btn" id="submitBtn">Submit Selection</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
