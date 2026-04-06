@@ -91,12 +91,20 @@ slides.forEach((_, i) => {
 
 const dots = Array.from(dotsContainer.children);
 
+function updateButtons() {
+  btnLeft.disabled  = current === 0;
+  btnRight.disabled = current === maxIndex;
+}
+
 function goTo(index) {
   current = Math.max(0, Math.min(index, maxIndex));
   track.style.transform = `translateX(-${current * (100 / VISIBLE)}%)`;
   dots.forEach((d) => d.classList.remove("active"));
   dots[current].classList.add("active");
+  updateButtons();
 }
+
+updateButtons(); // set initial state
 
 btnLeft.addEventListener("click", () => goTo(current - 1));
 btnRight.addEventListener("click", () => goTo(current + 1));

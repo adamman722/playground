@@ -154,8 +154,13 @@ body {
 .carousel-btn--left  { border-radius: 10px 0 0 10px; }
 .carousel-btn--right { border-radius: 0 10px 10px 0; }
 
-.carousel-btn:hover {
+.carousel-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.18);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 
 /* ── Dot indicators ── */
