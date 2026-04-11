@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUI Outlined TextField</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="demo">
+      <h2>Outlined Text Field</h2>
+
+      <!-- Basic -->
+      <div class="row">
+        <div>
+          <div class="mui-text-field" id="field-basic">
+            <input type="text" id="basic" autocomplete="off" />
+            <label for="basic">Label</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Label</span></legend>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Pre-filled value -->
+        <div>
+          <div class="mui-text-field shrunk" id="field-prefilled">
+            <input
+              type="text"
+              id="prefilled"
+              value="Prefilled value"
+              autocomplete="off"
+            />
+            <label for="prefilled">Label</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Label</span></legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <!-- With helper text -->
+      <div class="row">
+        <div>
+          <div class="mui-text-field" id="field-helper">
+            <input type="text" id="helper" autocomplete="off" />
+            <label for="helper">Helper text</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Helper text</span></legend>
+            </fieldset>
+          </div>
+          <p class="mui-helper-text">Some important helper text.</p>
+        </div>
+
+        <!-- Error state -->
+        <div>
+          <div class="mui-text-field error shrunk" id="field-error">
+            <input
+              type="text"
+              id="error-field"
+              value="Wrong value"
+              autocomplete="off"
+            />
+            <label for="error-field">Error</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Error</span></legend>
+            </fieldset>
+          </div>
+          <p class="mui-helper-text error-text">This field is required.</p>
+        </div>
+      </div>
+
+      <!-- Disabled states -->
+      <div class="row">
+        <div>
+          <div class="mui-text-field disabled" id="field-disabled">
+            <input
+              type="text"
+              id="disabled-field"
+              disabled
+              autocomplete="off"
+            />
+            <label for="disabled-field">Disabled</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Disabled</span></legend>
+            </fieldset>
+          </div>
+        </div>
+
+        <div>
+          <div class="mui-text-field disabled shrunk" id="field-disabled-value">
+            <input
+              type="text"
+              id="disabled-value"
+              value="Disabled value"
+              disabled
+              autocomplete="off"
+            />
+            <label for="disabled-value">Disabled</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Disabled</span></legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small size -->
+      <div class="row">
+        <div>
+          <div class="mui-text-field small" id="field-small">
+            <input type="text" id="small-field" autocomplete="off" />
+            <label for="small-field">Small</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Small</span></legend>
+            </fieldset>
+          </div>
+        </div>
+
+        <div>
+          <div class="mui-text-field small shrunk" id="field-small-filled">
+            <input
+              type="text"
+              id="small-filled"
+              value="Small value"
+              autocomplete="off"
+            />
+            <label for="small-filled">Small</label>
+            <fieldset aria-hidden="true">
+              <legend><span>Small</span></legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+      <h2>Select</h2>
+
+      <!-- Basic select -->
+      <div class="row">
+        <div>
+          <div class="mui-text-field mui-select-field" id="select-state">
+            <div class="mui-select" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+              <span class="mui-select-value mui-select-placeholder">&#8203;</span>
+            </div>
+            <svg class="mui-select-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+            </svg>
+            <label>State</label>
+            <fieldset aria-hidden="true"><legend><span>State</span></legend></fieldset>
+            <ul class="mui-select-menu" role="listbox">
+              <li class="mui-select-option" data-value="AL" role="option">Alabama</li>
+              <li class="mui-select-option" data-value="AK" role="option">Alaska</li>
+              <li class="mui-select-option" data-value="AZ" role="option">Arizona</li>
+              <li class="mui-select-option" data-value="AR" role="option">Arkansas</li>
+              <li class="mui-select-option" data-value="CA" role="option">California</li>
+              <li class="mui-select-option" data-value="CO" role="option">Colorado</li>
+              <li class="mui-select-option" data-value="CT" role="option">Connecticut</li>
+              <li class="mui-select-option" data-value="DE" role="option">Delaware</li>
+              <li class="mui-select-option" data-value="FL" role="option">Florida</li>
+              <li class="mui-select-option" data-value="GA" role="option">Georgia</li>
+              <li class="mui-select-option" data-value="HI" role="option">Hawaii</li>
+              <li class="mui-select-option" data-value="ID" role="option">Idaho</li>
+              <li class="mui-select-option" data-value="IL" role="option">Illinois</li>
+              <li class="mui-select-option" data-value="IN" role="option">Indiana</li>
+              <li class="mui-select-option" data-value="IA" role="option">Iowa</li>
+              <li class="mui-select-option" data-value="KS" role="option">Kansas</li>
+              <li class="mui-select-option" data-value="KY" role="option">Kentucky</li>
+              <li class="mui-select-option" data-value="LA" role="option">Louisiana</li>
+              <li class="mui-select-option" data-value="ME" role="option">Maine</li>
+              <li class="mui-select-option" data-value="MD" role="option">Maryland</li>
+              <li class="mui-select-option" data-value="MA" role="option">Massachusetts</li>
+              <li class="mui-select-option" data-value="MI" role="option">Michigan</li>
+              <li class="mui-select-option" data-value="MN" role="option">Minnesota</li>
+              <li class="mui-select-option" data-value="MS" role="option">Mississippi</li>
+              <li class="mui-select-option" data-value="MO" role="option">Missouri</li>
+              <li class="mui-select-option" data-value="MT" role="option">Montana</li>
+              <li class="mui-select-option" data-value="NE" role="option">Nebraska</li>
+              <li class="mui-select-option" data-value="NV" role="option">Nevada</li>
+              <li class="mui-select-option" data-value="NH" role="option">New Hampshire</li>
+              <li class="mui-select-option" data-value="NJ" role="option">New Jersey</li>
+              <li class="mui-select-option" data-value="NM" role="option">New Mexico</li>
+              <li class="mui-select-option" data-value="NY" role="option">New York</li>
+              <li class="mui-select-option" data-value="NC" role="option">North Carolina</li>
+              <li class="mui-select-option" data-value="ND" role="option">North Dakota</li>
+              <li class="mui-select-option" data-value="OH" role="option">Ohio</li>
+              <li class="mui-select-option" data-value="OK" role="option">Oklahoma</li>
+              <li class="mui-select-option" data-value="OR" role="option">Oregon</li>
+              <li class="mui-select-option" data-value="PA" role="option">Pennsylvania</li>
+              <li class="mui-select-option" data-value="RI" role="option">Rhode Island</li>
+              <li class="mui-select-option" data-value="SC" role="option">South Carolina</li>
+              <li class="mui-select-option" data-value="SD" role="option">South Dakota</li>
+              <li class="mui-select-option" data-value="TN" role="option">Tennessee</li>
+              <li class="mui-select-option" data-value="TX" role="option">Texas</li>
+              <li class="mui-select-option" data-value="UT" role="option">Utah</li>
+              <li class="mui-select-option" data-value="VT" role="option">Vermont</li>
+              <li class="mui-select-option" data-value="VA" role="option">Virginia</li>
+              <li class="mui-select-option" data-value="WA" role="option">Washington</li>
+              <li class="mui-select-option" data-value="WV" role="option">West Virginia</li>
+              <li class="mui-select-option" data-value="WI" role="option">Wisconsin</li>
+              <li class="mui-select-option" data-value="WY" role="option">Wyoming</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pre-selected -->
+        <div>
+          <div class="mui-text-field mui-select-field shrunk" id="select-state-filled">
+            <div class="mui-select" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false" data-selected="TX">
+              <span class="mui-select-value">Texas</span>
+            </div>
+            <svg class="mui-select-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+            </svg>
+            <label>State</label>
+            <fieldset aria-hidden="true"><legend><span>State</span></legend></fieldset>
+            <ul class="mui-select-menu" role="listbox">
+              <li class="mui-select-option" data-value="AL" role="option">Alabama</li>
+              <li class="mui-select-option" data-value="AK" role="option">Alaska</li>
+              <li class="mui-select-option" data-value="AZ" role="option">Arizona</li>
+              <li class="mui-select-option" data-value="AR" role="option">Arkansas</li>
+              <li class="mui-select-option" data-value="CA" role="option">California</li>
+              <li class="mui-select-option" data-value="CO" role="option">Colorado</li>
+              <li class="mui-select-option" data-value="CT" role="option">Connecticut</li>
+              <li class="mui-select-option" data-value="DE" role="option">Delaware</li>
+              <li class="mui-select-option" data-value="FL" role="option">Florida</li>
+              <li class="mui-select-option" data-value="GA" role="option">Georgia</li>
+              <li class="mui-select-option" data-value="HI" role="option">Hawaii</li>
+              <li class="mui-select-option" data-value="ID" role="option">Idaho</li>
+              <li class="mui-select-option" data-value="IL" role="option">Illinois</li>
+              <li class="mui-select-option" data-value="IN" role="option">Indiana</li>
+              <li class="mui-select-option" data-value="IA" role="option">Iowa</li>
+              <li class="mui-select-option" data-value="KS" role="option">Kansas</li>
+              <li class="mui-select-option" data-value="KY" role="option">Kentucky</li>
+              <li class="mui-select-option" data-value="LA" role="option">Louisiana</li>
+              <li class="mui-select-option" data-value="ME" role="option">Maine</li>
+              <li class="mui-select-option" data-value="MD" role="option">Maryland</li>
+              <li class="mui-select-option" data-value="MA" role="option">Massachusetts</li>
+              <li class="mui-select-option" data-value="MI" role="option">Michigan</li>
+              <li class="mui-select-option" data-value="MN" role="option">Minnesota</li>
+              <li class="mui-select-option" data-value="MS" role="option">Mississippi</li>
+              <li class="mui-select-option" data-value="MO" role="option">Missouri</li>
+              <li class="mui-select-option" data-value="MT" role="option">Montana</li>
+              <li class="mui-select-option" data-value="NE" role="option">Nebraska</li>
+              <li class="mui-select-option" data-value="NV" role="option">Nevada</li>
+              <li class="mui-select-option" data-value="NH" role="option">New Hampshire</li>
+              <li class="mui-select-option" data-value="NJ" role="option">New Jersey</li>
+              <li class="mui-select-option" data-value="NM" role="option">New Mexico</li>
+              <li class="mui-select-option" data-value="NY" role="option">New York</li>
+              <li class="mui-select-option" data-value="NC" role="option">North Carolina</li>
+              <li class="mui-select-option" data-value="ND" role="option">North Dakota</li>
+              <li class="mui-select-option" data-value="OH" role="option">Ohio</li>
+              <li class="mui-select-option" data-value="OK" role="option">Oklahoma</li>
+              <li class="mui-select-option" data-value="OR" role="option">Oregon</li>
+              <li class="mui-select-option" data-value="PA" role="option">Pennsylvania</li>
+              <li class="mui-select-option" data-value="RI" role="option">Rhode Island</li>
+              <li class="mui-select-option" data-value="SC" role="option">South Carolina</li>
+              <li class="mui-select-option" data-value="SD" role="option">South Dakota</li>
+              <li class="mui-select-option selected" data-value="TX" role="option">Texas</li>
+              <li class="mui-select-option" data-value="UT" role="option">Utah</li>
+              <li class="mui-select-option" data-value="VT" role="option">Vermont</li>
+              <li class="mui-select-option" data-value="VA" role="option">Virginia</li>
+              <li class="mui-select-option" data-value="WA" role="option">Washington</li>
+              <li class="mui-select-option" data-value="WV" role="option">West Virginia</li>
+              <li class="mui-select-option" data-value="WI" role="option">Wisconsin</li>
+              <li class="mui-select-option" data-value="WY" role="option">Wyoming</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Disabled select -->
+        <div>
+          <div class="mui-text-field mui-select-field disabled shrunk" id="select-state-disabled">
+            <div class="mui-select" role="combobox">
+              <span class="mui-select-value">California</span>
+            </div>
+            <svg class="mui-select-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+            </svg>
+            <label>State</label>
+            <fieldset aria-hidden="true"><legend><span>State</span></legend></fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

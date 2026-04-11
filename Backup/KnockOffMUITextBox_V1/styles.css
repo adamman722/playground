@@ -1,0 +1,356 @@
+/* Reset / Page */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo {
+  background: #fff;
+  padding: 48px 56px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 360px;
+}
+
+.demo h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.03em;
+  margin-bottom: -8px;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* TextField wrapper */
+.mui-text-field {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+/* Input */
+.mui-text-field input {
+  font-family: inherit;
+  font-size: 1rem; /* 16px */
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 16.5px 14px;
+  width: 100%;
+  cursor: text;
+  caret-color: #1976d2;
+}
+
+.mui-text-field input::placeholder {
+  color: rgba(0, 0, 0, 0.42);
+  opacity: 1;
+}
+
+/* Fieldset */
+.mui-text-field fieldset {
+  position: absolute;
+  inset: -5px 0 0; /* -5px top so legend sits on border */
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding: 0 8px;
+  pointer-events: none;
+  transition:
+    border-color 0.15s ease,
+    border-width 0.15s ease;
+  margin: 0;
+}
+
+/* Legend */
+.mui-text-field fieldset legend {
+  display: block;
+  visibility: hidden;
+  height: 11px;
+  font-size: 0.75em; /* 12px when input is 16px */
+  max-width: 0.01px; /* collapsed by default (label is inside) */
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  transition: max-width 0.1s cubic-bezier(0, 0, 0.2, 1) 50ms;
+}
+
+/* Floating label */
+.mui-text-field label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  transform-origin: left top;
+  transition:
+    top 0.2s cubic-bezier(0, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0, 0, 0.2, 1),
+    font-size 0.2s cubic-bezier(0, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0, 0, 0.2, 1),
+    left 0.2s cubic-bezier(0, 0, 0.2, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100% - 28px);
+  text-overflow: ellipsis;
+}
+
+/* Shrunk state */
+.mui-text-field.shrunk label,
+.mui-text-field input:focus ~ label {
+  top: 0;
+  transform: translateY(-50%) scale(0.75);
+  left: 14px;
+}
+
+.mui-text-field.shrunk fieldset legend,
+.mui-text-field input:focus ~ fieldset legend {
+  max-width: 100%; /* open the gap */
+  padding: 0 4px;
+}
+
+/* Hover */
+.mui-text-field:not(.disabled):hover fieldset {
+  border-color: rgba(0, 0, 0, 0.87);
+}
+
+/* Focus */
+.mui-text-field input:focus ~ fieldset {
+  border: 2px solid #1976d2;
+}
+
+.mui-text-field input:focus ~ label,
+.mui-text-field.shrunk input:focus ~ label {
+  color: #1976d2;
+}
+
+/* Error */
+.mui-text-field.error fieldset {
+  border-color: #d32f2f;
+}
+
+.mui-text-field.error label {
+  color: #d32f2f;
+}
+
+.mui-text-field.error:hover fieldset {
+  border-color: #d32f2f;
+}
+
+.mui-text-field.error input:focus ~ fieldset {
+  border: 2px solid #d32f2f;
+}
+
+.mui-text-field.error input:focus ~ label {
+  color: #d32f2f;
+}
+
+.mui-text-field.error input {
+  caret-color: #d32f2f;
+}
+
+/* Disabled */
+.mui-text-field.disabled {
+  pointer-events: none;
+}
+
+.mui-text-field.disabled input {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
+}
+
+.mui-text-field.disabled fieldset {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.mui-text-field.disabled label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* Helper text */
+.mui-helper-text {
+  font-size: 0.75rem;
+  line-height: 1.66;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 3px 14px 0;
+}
+
+.mui-helper-text.error-text {
+  color: #d32f2f;
+}
+
+/* Small */
+.mui-text-field.small input {
+  padding: 8.5px 14px;
+  font-size: 0.875rem;
+}
+
+.mui-text-field.small label {
+  font-size: 0.875rem;
+  top: 50%;
+}
+
+.mui-text-field.small.shrunk label,
+.mui-text-field.small input:focus ~ label {
+  top: 0;
+  transform: translateY(-50%) scale(0.857); /* 12/14 */
+}
+
+/* Divider */
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+
+/* Select control */
+.mui-select-field {
+  min-width: 240px;
+}
+
+.mui-select-field .mui-select {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 16.5px 32px 16.5px 14px;
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.mui-select-field .mui-select-placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+
+.mui-select-icon {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.mui-select-field.open .mui-select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Open / focus states for select */
+.mui-select:focus ~ fieldset,
+.mui-select-field.open fieldset {
+  border: 2px solid #1976d2;
+}
+
+.mui-select:focus ~ label,
+.mui-select-field.open label {
+  color: #1976d2;
+}
+
+.mui-select-field.open label,
+.mui-select-field.shrunk label {
+  top: 0;
+  transform: translateY(-50%) scale(0.75);
+  left: 14px;
+}
+
+.mui-select-field.open fieldset legend,
+.mui-select-field.shrunk fieldset legend {
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+/* Dropdown menu */
+.mui-select-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1300;
+  list-style: none;
+  padding: 8px 0;
+}
+
+.mui-select-field.open .mui-select-menu {
+  display: block;
+}
+
+.mui-select-option {
+  padding: 6px 16px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.mui-select-option:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.mui-select-option.selected {
+  background: rgba(25, 118, 210, 0.08);
+  color: #1976d2;
+  font-weight: 500;
+}
+
+/* Disabled select */
+.mui-select-field.disabled .mui-select {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+  pointer-events: none;
+}
+
+.mui-select-field.disabled fieldset {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.mui-select-field.disabled label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.mui-select-field.disabled .mui-select-icon {
+  color: rgba(0, 0, 0, 0.38);
+}
