@@ -35,7 +35,7 @@ body {
   margin-bottom: -8px;
 }
 
-.row {
+.demo .row {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
@@ -43,7 +43,7 @@ body {
 }
 
 /* TextField wrapper */
-.mui-text-field {
+.demo .mui-text-field {
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ body {
 }
 
 /* Input */
-.mui-text-field input {
+.demo .mui-text-field input {
   font-family: inherit;
   font-size: 1rem; /* 16px */
   line-height: 1.4375em;
@@ -65,13 +65,13 @@ body {
   caret-color: #1976d2;
 }
 
-.mui-text-field input::placeholder {
+.demo .mui-text-field input::placeholder {
   color: rgba(0, 0, 0, 0.42);
   opacity: 1;
 }
 
 /* Fieldset */
-.mui-text-field fieldset {
+.demo .mui-text-field fieldset {
   position: absolute;
   inset: -5px 0 0; /* -5px top so legend sits on border */
   border: 1px solid rgba(0, 0, 0, 0.23);
@@ -85,7 +85,7 @@ body {
 }
 
 /* Legend */
-.mui-text-field fieldset legend {
+.demo .mui-text-field fieldset legend {
   display: block;
   visibility: hidden;
   height: 11px;
@@ -98,7 +98,7 @@ body {
 }
 
 /* Floating label */
-.mui-text-field label {
+.demo .mui-text-field label {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -120,120 +120,120 @@ body {
 }
 
 /* Shrunk state */
-.mui-text-field.shrunk label,
-.mui-text-field input:focus ~ label {
+.demo .mui-text-field.shrunk label,
+.demo .mui-text-field input:focus ~ label {
   top: 0;
   transform: translateY(-50%) scale(0.75);
   left: 14px;
 }
 
-.mui-text-field.shrunk fieldset legend,
-.mui-text-field input:focus ~ fieldset legend {
+.demo .mui-text-field.shrunk fieldset legend,
+.demo .mui-text-field input:focus ~ fieldset legend {
   max-width: 100%; /* open the gap */
   padding: 0 4px;
 }
 
 /* Hover */
-.mui-text-field:not(.disabled):hover fieldset {
+.demo .mui-text-field:not(.disabled):hover fieldset {
   border-color: rgba(0, 0, 0, 0.87);
 }
 
 /* Focus */
-.mui-text-field input:focus ~ fieldset {
+.demo .mui-text-field input:focus ~ fieldset {
   border: 2px solid #1976d2;
 }
 
-.mui-text-field input:focus ~ label,
-.mui-text-field.shrunk input:focus ~ label {
+.demo .mui-text-field input:focus ~ label,
+.demo .mui-text-field.shrunk input:focus ~ label {
   color: #1976d2;
 }
 
 /* Error */
-.mui-text-field.error fieldset {
+.demo .mui-text-field.error fieldset {
   border-color: #d32f2f;
 }
 
-.mui-text-field.error label {
+.demo .mui-text-field.error label {
   color: #d32f2f;
 }
 
-.mui-text-field.error:hover fieldset {
+.demo .mui-text-field.error:hover fieldset {
   border-color: #d32f2f;
 }
 
-.mui-text-field.error input:focus ~ fieldset {
+.demo .mui-text-field.error input:focus ~ fieldset {
   border: 2px solid #d32f2f;
 }
 
-.mui-text-field.error input:focus ~ label {
+.demo .mui-text-field.error input:focus ~ label {
   color: #d32f2f;
 }
 
-.mui-text-field.error input {
+.demo .mui-text-field.error input {
   caret-color: #d32f2f;
 }
 
 /* Disabled */
-.mui-text-field.disabled {
+.demo .mui-text-field.disabled {
   pointer-events: none;
 }
 
-.mui-text-field.disabled input {
+.demo .mui-text-field.disabled input {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
 }
 
-.mui-text-field.disabled fieldset {
+.demo .mui-text-field.disabled fieldset {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.mui-text-field.disabled label {
+.demo .mui-text-field.disabled label {
   color: rgba(0, 0, 0, 0.38);
 }
 
 /* Helper text */
-.mui-helper-text {
+.demo .mui-helper-text {
   font-size: 0.75rem;
   line-height: 1.66;
   color: rgba(0, 0, 0, 0.6);
   margin: 3px 14px 0;
 }
 
-.mui-helper-text.error-text {
+.demo .mui-helper-text.error-text {
   color: #d32f2f;
 }
 
 /* Small */
-.mui-text-field.small input {
+.demo .mui-text-field.small input {
   padding: 8.5px 14px;
   font-size: 0.875rem;
 }
 
-.mui-text-field.small label {
+.demo .mui-text-field.small label {
   font-size: 0.875rem;
   top: 50%;
 }
 
-.mui-text-field.small.shrunk label,
-.mui-text-field.small input:focus ~ label {
+.demo .mui-text-field.small.shrunk label,
+.demo .mui-text-field.small input:focus ~ label {
   top: 0;
   transform: translateY(-50%) scale(0.857); /* 12/14 */
 }
 
 /* Divider */
-.section-divider {
+.demo .section-divider {
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   margin: 0;
 }
 
 /* Select control */
-.mui-select-field {
+.demo .mui-select-field {
   min-width: 240px;
 }
 
-.mui-select-field .mui-select {
+.demo .mui-select-field .mui-select {
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.4375em;
@@ -248,11 +248,11 @@ body {
   outline: none;
 }
 
-.mui-select-field .mui-select-placeholder {
+.demo .mui-select-field .mui-select-placeholder {
   color: rgba(0, 0, 0, 0.42);
 }
 
-.mui-select-icon {
+.demo .mui-select-icon {
   position: absolute;
   right: 7px;
   top: 50%;
@@ -264,36 +264,36 @@ body {
   align-items: center;
 }
 
-.mui-select-field.open .mui-select-icon {
+.demo .mui-select-field.open .mui-select-icon {
   transform: translateY(-50%) rotate(180deg);
 }
 
 /* Open / focus states for select */
-.mui-select:focus ~ fieldset,
-.mui-select-field.open fieldset {
+.demo .mui-select:focus ~ fieldset,
+.demo .mui-select-field.open fieldset {
   border: 2px solid #1976d2;
 }
 
-.mui-select:focus ~ label,
-.mui-select-field.open label {
+.demo .mui-select:focus ~ label,
+.demo .mui-select-field.open label {
   color: #1976d2;
 }
 
-.mui-select-field.open label,
-.mui-select-field.shrunk label {
+.demo .mui-select-field.open label,
+.demo .mui-select-field.shrunk label {
   top: 0;
   transform: translateY(-50%) scale(0.75);
   left: 14px;
 }
 
-.mui-select-field.open fieldset legend,
-.mui-select-field.shrunk fieldset legend {
+.demo .mui-select-field.open fieldset legend,
+.demo .mui-select-field.shrunk fieldset legend {
   max-width: 100%;
   padding: 0 4px;
 }
 
 /* Dropdown menu */
-.mui-select-menu {
+.demo .mui-select-menu {
   display: none;
   position: absolute;
   top: calc(100% + 4px);
@@ -312,11 +312,11 @@ body {
   padding: 8px 0;
 }
 
-.mui-select-field.open .mui-select-menu {
+.demo .mui-select-field.open .mui-select-menu {
   display: block;
 }
 
-.mui-select-option {
+.demo .mui-select-option {
   padding: 6px 16px;
   min-height: 48px;
   display: flex;
@@ -326,31 +326,90 @@ body {
   transition: background 0.1s ease;
 }
 
-.mui-select-option:hover {
+.demo .mui-select-option:hover {
   background: rgba(0, 0, 0, 0.04);
 }
 
-.mui-select-option.selected {
+.demo .mui-select-option.selected {
   background: rgba(25, 118, 210, 0.08);
   color: #1976d2;
   font-weight: 500;
 }
 
+/* Form layout */
+.demo .form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.demo .form-full-width {
+  width: 100%;
+}
+
+.demo .form-full-width input {
+  width: 100%;
+}
+
+.demo #form-zip {
+  min-width: 100px;
+  max-width: 120px;
+}
+
+/* MUI contained button */
+.demo .mui-btn {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #1976d2;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  min-height: 36.5px;
+  cursor: pointer;
+  box-shadow:
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.demo .mui-btn:hover {
+  background: #1565c0;
+  box-shadow:
+    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.demo .mui-btn:active {
+  background: #1565c0;
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
 /* Disabled select */
-.mui-select-field.disabled .mui-select {
+.demo .mui-select-field.disabled .mui-select {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
   pointer-events: none;
 }
 
-.mui-select-field.disabled fieldset {
+.demo .mui-select-field.disabled fieldset {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.mui-select-field.disabled label {
+.demo .mui-select-field.disabled label {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.mui-select-field.disabled .mui-select-icon {
+.demo .mui-select-field.disabled .mui-select-icon {
   color: rgba(0, 0, 0, 0.38);
 }
