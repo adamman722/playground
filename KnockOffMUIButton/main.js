@@ -6,7 +6,7 @@ function createRipple(e) {
   const y = e.clientY - rect.top - size / 2;
 
   const ripple = document.createElement('span');
-  ripple.classList.add('ripple');
+  ripple.classList.add('bilt-ripple');
   ripple.style.width  = `${size}px`;
   ripple.style.height = `${size}px`;
   ripple.style.left   = `${x}px`;
