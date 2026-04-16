@@ -12,13 +12,13 @@ function createRipple(e) {
   ripple.style.left   = `${x}px`;
   ripple.style.top    = `${y}px`;
 
-  const existing = btn.querySelector('.ripple');
+  const existing = btn.querySelector('.bilt-ripple');
   if (existing) existing.remove();
 
   btn.appendChild(ripple);
   ripple.addEventListener('animationend', () => ripple.remove());
 }
 
-document.querySelectorAll('.btn, .btn-icon-only').forEach(btn => {
+document.querySelectorAll('.bilt-btn, .bilt-btn-icon-only').forEach(btn => {
   btn.addEventListener('click', createRipple);
 });

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bilt-page">
+      <!-- Carousel -->
+      <section class="bilt-carousel-section">
+        <div class="bilt-carousel">
+          <div class="bilt-carousel-track-container">
+            <ul class="bilt-carousel-track"></ul>
+          </div>
+          <button
+            class="bilt-carousel-btn bilt-carousel-btn--left"
+            aria-label="Previous slide"
+          >
+            &#8249;
+          </button>
+          <button
+            class="bilt-carousel-btn bilt-carousel-btn--right"
+            aria-label="Next slide"
+          >
+            &#8250;
+          </button>
+          <div class="bilt-carousel-dots"></div>
+        </div>
+
+        <div class="bilt-submit-bar">
+          <span class="bilt-submit-count">0 selected</span>
+          <button
+            class="bilt-btn bilt-btn-contained bilt-btn-primary"
+            id="biltSubmitBtn"
+            disabled
+          >
+            <span class="bilt-btn-label">Submit Selection</span>
+          </button>
+        </div>
+        <p class="bilt-carousel-error" id="biltCarouselError">
+          Please select an image before continuing.
+        </p>
+      </section>
+
+      <hr class="bilt-section-divider" />
+
+      <!-- Address Form -->
+      <section class="bilt-form-section">
+        <h2 class="bilt-form-heading">Your Information</h2>
+
+        <form class="bilt-form" id="bilt-address-form" novalidate>
+          <div class="bilt-row">
+            <div>
+              <div class="bilt-text-field" id="bilt-form-first-name">
+                <input
+                  type="text"
+                  id="bilt-first-name"
+                  autocomplete="given-name"
+                />
+                <label for="bilt-first-name">First name</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>First name</span></legend>
+                </fieldset>
+              </div>
+              <p class="bilt-helper-text">Required</p>
+            </div>
+            <div>
+              <div class="bilt-text-field" id="bilt-form-last-name">
+                <input
+                  type="text"
+                  id="bilt-last-name"
+                  autocomplete="family-name"
+                />
+                <label for="bilt-last-name">Last name</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>Last name</span></legend>
+                </fieldset>
+              </div>
+              <p class="bilt-helper-text">Required</p>
+            </div>
+          </div>
+
+          <div class="bilt-row">
+            <div style="width: 100%">
+              <div
+                class="bilt-text-field bilt-form-full-width"
+                id="bilt-form-street"
+              >
+                <input
+                  type="text"
+                  id="bilt-street-address"
+                  autocomplete="street-address"
+                />
+                <label for="bilt-street-address">Street address</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>Street address</span></legend>
+                </fieldset>
+              </div>
+              <p class="bilt-helper-text">Required</p>
+            </div>
+          </div>
+
+          <div class="bilt-row">
+            <div>
+              <div class="bilt-text-field" id="bilt-form-city">
+                <input
+                  type="text"
+                  id="bilt-city"
+                  autocomplete="address-level2"
+                />
+                <label for="bilt-city">City</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>City</span></legend>
+                </fieldset>
+              </div>
+              <p class="bilt-helper-text">Required</p>
+            </div>
+
+            <div>
+              <div
+                class="bilt-text-field bilt-select-field"
+                id="bilt-form-state"
+              >
+                <div
+                  class="bilt-select"
+                  tabindex="0"
+                  role="combobox"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="bilt-select-value bilt-select-placeholder"
+                    >&#8203;</span
+                  >
+                </div>
+                <svg
+                  class="bilt-select-icon"
+                  focusable="false"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="currentColor" d="M7 10l5 5 5-5z" />
+                </svg>
+                <label>State</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>State</span></legend>
+                </fieldset>
+                <ul class="bilt-select-menu" role="listbox">
+                  <li class="bilt-select-option" data-value="AL" role="option">
+                    Alabama
+                  </li>
+                  <li class="bilt-select-option" data-value="AK" role="option">
+                    Alaska
+                  </li>
+                  <li class="bilt-select-option" data-value="AZ" role="option">
+                    Arizona
+                  </li>
+                  <li class="bilt-select-option" data-value="AR" role="option">
+                    Arkansas
+                  </li>
+                  <li class="bilt-select-option" data-value="CA" role="option">
+                    California
+                  </li>
+                  <li class="bilt-select-option" data-value="CO" role="option">
+                    Colorado
+                  </li>
+                  <li class="bilt-select-option" data-value="CT" role="option">
+                    Connecticut
+                  </li>
+                  <li class="bilt-select-option" data-value="DE" role="option">
+                    Delaware
+                  </li>
+                  <li class="bilt-select-option" data-value="FL" role="option">
+                    Florida
+                  </li>
+                  <li class="bilt-select-option" data-value="GA" role="option">
+                    Georgia
+                  </li>
+                  <li class="bilt-select-option" data-value="HI" role="option">
+                    Hawaii
+                  </li>
+                  <li class="bilt-select-option" data-value="ID" role="option">
+                    Idaho
+                  </li>
+                  <li class="bilt-select-option" data-value="IL" role="option">
+                    Illinois
+                  </li>
+                  <li class="bilt-select-option" data-value="IN" role="option">
+                    Indiana
+                  </li>
+                  <li class="bilt-select-option" data-value="IA" role="option">
+                    Iowa
+                  </li>
+                  <li class="bilt-select-option" data-value="KS" role="option">
+                    Kansas
+                  </li>
+                  <li class="bilt-select-option" data-value="KY" role="option">
+                    Kentucky
+                  </li>
+                  <li class="bilt-select-option" data-value="LA" role="option">
+                    Louisiana
+                  </li>
+                  <li class="bilt-select-option" data-value="ME" role="option">
+                    Maine
+                  </li>
+                  <li class="bilt-select-option" data-value="MD" role="option">
+                    Maryland
+                  </li>
+                  <li class="bilt-select-option" data-value="MA" role="option">
+                    Massachusetts
+                  </li>
+                  <li class="bilt-select-option" data-value="MI" role="option">
+                    Michigan
+                  </li>
+                  <li class="bilt-select-option" data-value="MN" role="option">
+                    Minnesota
+                  </li>
+                  <li class="bilt-select-option" data-value="MS" role="option">
+                    Mississippi
+                  </li>
+                  <li class="bilt-select-option" data-value="MO" role="option">
+                    Missouri
+                  </li>
+                  <li class="bilt-select-option" data-value="MT" role="option">
+                    Montana
+                  </li>
+                  <li class="bilt-select-option" data-value="NE" role="option">
+                    Nebraska
+                  </li>
+                  <li class="bilt-select-option" data-value="NV" role="option">
+                    Nevada
+                  </li>
+                  <li class="bilt-select-option" data-value="NH" role="option">
+                    New Hampshire
+                  </li>
+                  <li class="bilt-select-option" data-value="NJ" role="option">
+                    New Jersey
+                  </li>
+                  <li class="bilt-select-option" data-value="NM" role="option">
+                    New Mexico
+                  </li>
+                  <li class="bilt-select-option" data-value="NY" role="option">
+                    New York
+                  </li>
+                  <li class="bilt-select-option" data-value="NC" role="option">
+                    North Carolina
+                  </li>
+                  <li class="bilt-select-option" data-value="ND" role="option">
+                    North Dakota
+                  </li>
+                  <li class="bilt-select-option" data-value="OH" role="option">
+                    Ohio
+                  </li>
+                  <li class="bilt-select-option" data-value="OK" role="option">
+                    Oklahoma
+                  </li>
+                  <li class="bilt-select-option" data-value="OR" role="option">
+                    Oregon
+                  </li>
+                  <li class="bilt-select-option" data-value="PA" role="option">
+                    Pennsylvania
+                  </li>
+                  <li class="bilt-select-option" data-value="RI" role="option">
+                    Rhode Island
+                  </li>
+                  <li class="bilt-select-option" data-value="SC" role="option">
+                    South Carolina
+                  </li>
+                  <li class="bilt-select-option" data-value="SD" role="option">
+                    South Dakota
+                  </li>
+                  <li class="bilt-select-option" data-value="TN" role="option">
+                    Tennessee
+                  </li>
+                  <li class="bilt-select-option" data-value="TX" role="option">
+                    Texas
+                  </li>
+                  <li class="bilt-select-option" data-value="UT" role="option">
+                    Utah
+                  </li>
+                  <li class="bilt-select-option" data-value="VT" role="option">
+                    Vermont
+                  </li>
+                  <li class="bilt-select-option" data-value="VA" role="option">
+                    Virginia
+                  </li>
+                  <li class="bilt-select-option" data-value="WA" role="option">
+                    Washington
+                  </li>
+                  <li class="bilt-select-option" data-value="WV" role="option">
+                    West Virginia
+                  </li>
+                  <li class="bilt-select-option" data-value="WI" role="option">
+                    Wisconsin
+                  </li>
+                  <li class="bilt-select-option" data-value="WY" role="option">
+                    Wyoming
+                  </li>
+                </ul>
+              </div>
+              <p class="bilt-helper-text">Required</p>
+            </div>
+
+            <div>
+              <div class="bilt-text-field" id="bilt-form-zip">
+                <input
+                  type="text"
+                  id="bilt-zip"
+                  autocomplete="postal-code"
+                  maxlength="10"
+                />
+                <label for="bilt-zip">ZIP</label>
+                <fieldset aria-hidden="true">
+                  <legend><span>ZIP</span></legend>
+                </fieldset>
+              </div>
+              <p class="bilt-helper-text" id="biltZipHelper">Required</p>
+            </div>
+          </div>
+
+          <div class="bilt-row">
+            <button
+              type="submit"
+              class="bilt-btn bilt-btn-contained bilt-btn-primary"
+            >
+              <span class="bilt-btn-label">Submit</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Review section (hidden until form is submitted) -->
+      <section class="bilt-review-section" id="biltReviewSection" hidden>
+        <hr class="bilt-section-divider" />
+
+        <div class="bilt-review-card">
+          <h2 class="bilt-form-heading">Order Summary</h2>
+
+          <div class="bilt-review-body">
+            <div class="bilt-review-photo">
+              <img id="biltReviewImg" src="" alt="" />
+              <span id="biltReviewPhotoLabel"></span>
+            </div>
+
+            <div class="bilt-review-details">
+              <div class="bilt-review-group">
+                <p class="bilt-review-label">Name</p>
+                <p class="bilt-review-value" id="biltReviewName"></p>
+              </div>
+              <div class="bilt-review-group">
+                <p class="bilt-review-label">Address</p>
+                <p class="bilt-review-value" id="biltReviewAddress"></p>
+                <p class="bilt-review-value" id="biltReviewCityStateZip"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

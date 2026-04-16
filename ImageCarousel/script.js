@@ -48,21 +48,21 @@ const cards = [
 ];
 
 // ── Render slides ────────────────────────────────────────────
-const track = document.querySelector(".carousel-track");
+const track = document.querySelector(".bilt-carousel-track");
 
 if (cards.length === 0) {
-  document.querySelector(".carousel").innerHTML =
-    '<p class="carousel-empty">No photos available.</p>';
+  document.querySelector(".bilt-carousel").innerHTML =
+    '<p class="bilt-carousel-empty">No photos available.</p>';
 } else {
   cards.forEach(({ id, label, src }) => {
     const li = document.createElement("li");
-    li.className = "carousel-slide";
+    li.className = "bilt-carousel-slide";
     li.innerHTML = `
-      <div class="card" data-id="${id}" data-label="${label}" data-src="${src}">
+      <div class="bilt-card" data-id="${id}" data-label="${label}" data-src="${src}">
         <img src="${src}" alt="${label}">
-        <div class="card-footer">
-        <span class="card-label">${label}</span>
-          <span class="card-checkbox"></span>
+        <div class="bilt-card-footer">
+          <span class="bilt-card-label">${label}</span>
+          <span class="bilt-card-checkbox"></span>
         </div>
       </div>`;
     track.appendChild(li);
@@ -71,9 +71,9 @@ if (cards.length === 0) {
 
 // ── Carousel navigation ──────────────────────────────────────
 const slides = Array.from(track.children);
-const dotsContainer = document.querySelector(".carousel-dots");
-const btnLeft = document.querySelector(".carousel-btn--left");
-const btnRight = document.querySelector(".carousel-btn--right");
+const dotsContainer = document.querySelector(".bilt-carousel-dots");
+const btnLeft = document.querySelector(".bilt-carousel-btn--left");
+const btnRight = document.querySelector(".bilt-carousel-btn--right");
 
 const VISIBLE = 3;
 const maxIndex = Math.max(0, slides.length - VISIBLE);
@@ -82,9 +82,9 @@ let current = 0;
 slides.forEach((_, i) => {
   if (i > maxIndex) return;
   const dot = document.createElement("button");
-  dot.classList.add("dot");
+  dot.classList.add("bilt-dot");
   dot.setAttribute("aria-label", `Go to position ${i + 1}`);
-  if (i === 0) dot.classList.add("active");
+  if (i === 0) dot.classList.add("bilt-active");
   dot.addEventListener("click", () => goTo(i));
   dotsContainer.appendChild(dot);
 });
@@ -99,8 +99,8 @@ function updateButtons() {
 function goTo(index) {
   current = Math.max(0, Math.min(index, maxIndex));
   track.style.transform = `translateX(-${current * (100 / VISIBLE)}%)`;
-  dots.forEach((d) => d.classList.remove("active"));
-  dots[current].classList.add("active");
+  dots.forEach((d) => d.classList.remove("bilt-active"));
+  dots[current].classList.add("bilt-active");
   updateButtons();
 }
 
@@ -117,8 +117,8 @@ document.addEventListener("keydown", (e) => {
 // ── Card selection ───────────────────────────────────────────
 let selectedCard = null; // { id, label, src }
 
-const countEl = document.querySelector(".submit-count");
-const submitBtn = document.getElementById("submitBtn");
+const countEl = document.querySelector(".bilt-submit-count");
+const submitBtn = document.getElementById("biltSubmitBtn");
 
 function updateSubmitBar() {
   countEl.textContent = selectedCard ? "1 selected" : "0 selected";
@@ -127,7 +127,7 @@ function updateSubmitBar() {
 
 updateSubmitBar();
 
-const allCards = document.querySelectorAll(".card");
+const allCards = document.querySelectorAll(".bilt-card");
 
 allCards.forEach((card) => {
   card.addEventListener("click", () => {
@@ -135,131 +135,13 @@ allCards.forEach((card) => {
 
     if (selectedCard?.id === id) {
       selectedCard = null;
-      card.classList.remove("selected");
+      card.classList.remove("bilt-selected");
     } else {
-      allCards.forEach((c) => c.classList.remove("selected"));
+      allCards.forEach((c) => c.classList.remove("bilt-selected"));
       selectedCard = { id, label, src };
-      card.classList.add("selected");
+      card.classList.add("bilt-selected");
     }
 
     updateSubmitBar();
   });
 });
-
-// ── Modal ─────────────────────────────────────────────────────
-const modalOverlay   = document.getElementById("modalOverlay");
-const infoForm       = document.getElementById("infoForm");
-const step1El        = document.getElementById("step1");
-const step2El        = document.getElementById("step2");
-const stepLineEl     = document.getElementById("stepLine");
-
-let orderPayload = null;
-
-// Stepper states: info | review | success
-function setStep(name) {
-  const bubble1 = step1El.querySelector(".stepper-bubble");
-  const bubble2 = step2El.querySelector(".stepper-bubble");
-
-  step1El.className   = "stepper-step";
-  step2El.className   = "stepper-step";
-  stepLineEl.className = "stepper-line";
-
-  document.querySelectorAll(".modal-screen").forEach(s => s.classList.remove("active"));
-
-  if (name === "info") {
-    step1El.classList.add("active");
-    bubble1.innerHTML = "1";
-    bubble2.innerHTML = "2";
-    document.getElementById("screenInfo").classList.add("active");
-    infoForm.querySelector("input").focus();
-  } else if (name === "review") {
-    step1El.classList.add("completed");
-    bubble1.innerHTML = "&#10003;";
-    stepLineEl.classList.add("completed");
-    step2El.classList.add("active");
-    bubble2.innerHTML = "2";
-    document.getElementById("screenReview").classList.add("active");
-  } else if (name === "success") {
-    step1El.classList.add("completed");
-    bubble1.innerHTML = "&#10003;";
-    stepLineEl.classList.add("completed");
-    step2El.classList.add("completed");
-    bubble2.innerHTML = "&#10003;";
-    // Hide stepper on success screen
-    document.querySelector(".stepper").style.display = "none";
-    document.getElementById("screenSuccess").classList.add("active");
-  }
-}
-
-function openModal() {
-  document.querySelector(".stepper").style.display = "";
-  modalOverlay.classList.add("open");
-  modalOverlay.setAttribute("aria-hidden", "false");
-  setStep("info");
-}
-
-function closeModal() {
-  modalOverlay.classList.remove("open");
-  modalOverlay.setAttribute("aria-hidden", "true");
-  infoForm.reset();
-  infoForm.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
-}
-
-submitBtn.addEventListener("click", openModal);
-document.getElementById("modalCancel").addEventListener("click", closeModal);
-
-modalOverlay.addEventListener("click", e => {
-  if (e.target === modalOverlay) closeModal();
-});
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && modalOverlay.classList.contains("open")) closeModal();
-});
-
-// Step 1 → Step 2
-infoForm.addEventListener("submit", e => {
-  e.preventDefault();
-
-  let valid = true;
-  infoForm.querySelectorAll("input[required]").forEach(input => {
-    if (!input.value.trim()) {
-      input.classList.add("invalid");
-      valid = false;
-    } else {
-      input.classList.remove("invalid");
-    }
-  });
-  if (!valid) return;
-
-  orderPayload = {
-    selection:     selectedCard,
-    firstName:     infoForm.firstName.value.trim(),
-    lastName:      infoForm.lastName.value.trim(),
-    streetAddress: infoForm.streetAddress.value.trim(),
-    city:          infoForm.city.value.trim(),
-    state:         infoForm.state.value.trim(),
-    zip:           infoForm.zip.value.trim(),
-  };
-
-  document.getElementById("reviewImg").src                   = orderPayload.selection.src;
-  document.getElementById("reviewImg").alt                   = orderPayload.selection.label;
-  document.getElementById("reviewPhotoLabel").textContent    = orderPayload.selection.label;
-  document.getElementById("reviewName").textContent          = `${orderPayload.firstName} ${orderPayload.lastName}`;
-  document.getElementById("reviewAddress").textContent       = orderPayload.streetAddress;
-  document.getElementById("reviewCityStateZip").textContent  = `${orderPayload.city}, ${orderPayload.state} ${orderPayload.zip}`;
-
-  setStep("review");
-});
-
-// Step 2 → Step 1
-document.getElementById("reviewBack").addEventListener("click", () => setStep("info"));
-
-// Step 2 → Step 3
-document.getElementById("confirmOrderBtn").addEventListener("click", () => {
-  // Ready for submission — wire this to your API as needed.
-  console.log("Order confirmed:", orderPayload);
-  setStep("success");
-});
-
-// Close on Done
-document.getElementById("successClose").addEventListener("click", closeModal);

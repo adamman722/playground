@@ -1,0 +1,679 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", system-ui, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+/* Page wrapper */
+.bilt-page {
+  width: 900px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Divider */
+.bilt-section-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* ─────────────────────────────────────────
+   Carousel
+───────────────────────────────────────── */
+.bilt-carousel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bilt-carousel {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  grid-template-rows: 1fr auto;
+}
+
+.bilt-carousel-track-container {
+  grid-column: 2;
+  grid-row: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.bilt-carousel-btn--left  { grid-column: 1; grid-row: 1; }
+.bilt-carousel-btn--right { grid-column: 3; grid-row: 1; }
+.bilt-carousel-dots       { grid-column: 1 / -1; grid-row: 2; }
+
+.bilt-carousel-track {
+  display: flex;
+  list-style: none;
+  transition: transform 0.4s ease;
+}
+
+.bilt-carousel-slide {
+  flex: 0 0 calc(100% / 3);
+  padding: 0 6px;
+}
+
+/* Card */
+.bilt-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #b2b5b6;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.bilt-card:hover {
+  border-color: #7a7d7e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.bilt-card.bilt-selected {
+  border-color: #a1ce57;
+  box-shadow: 0 0 0 3px rgba(161, 206, 87, 0.35);
+}
+
+.bilt-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  -webkit-user-drag: none;
+}
+
+.bilt-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+.bilt-card-checkbox {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  border: 2px solid #475569;
+  background: transparent;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+.bilt-card-checkbox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 10px no-repeat;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.bilt-card.bilt-selected .bilt-card-checkbox {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+
+.bilt-card.bilt-selected .bilt-card-checkbox::after {
+  opacity: 1;
+}
+
+.bilt-card-label {
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.bilt-carousel-empty {
+  color: #64748b;
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* Nav buttons */
+.bilt-carousel-btn {
+  background: #005f9e;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bilt-carousel-btn--left  { border-radius: 10px 0 0 10px; }
+.bilt-carousel-btn--right { border-radius: 0 10px 10px 0; }
+
+.bilt-carousel-btn:hover:not(:disabled) { background: #004f87; }
+
+.bilt-carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Dots */
+.bilt-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.bilt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b2b5b6;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.bilt-dot.bilt-active {
+  background: #005f9e;
+  transform: scale(1.25);
+}
+
+/* Submit bar */
+.bilt-submit-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bilt-submit-count {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.bilt-carousel-error {
+  display: none;
+  font-size: 0.8rem;
+  color: #d32f2f;
+}
+
+.bilt-carousel-error.bilt-visible {
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+   MUI Buttons
+───────────────────────────────────────── */
+:root {
+  --primary:        #08568B;
+  --primary-dark:   #064272;
+  --primary-light:  rgba(8, 86, 139, 0.08);
+  --primary-border: rgba(8, 86, 139, 0.5);
+}
+
+.bilt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  padding: 6px 16px;
+  min-width: 64px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow      250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color           250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bilt-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.bilt-btn-contained {
+  color: #fff;
+  box-shadow:
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px  0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px  0px rgba(0, 0, 0, 0.12);
+}
+
+.bilt-btn-contained:hover {
+  box-shadow:
+    0px 2px 4px  -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px   0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px  0px rgba(0, 0, 0, 0.12);
+}
+
+.bilt-btn-contained.bilt-btn-primary             { background: var(--primary); }
+.bilt-btn-contained.bilt-btn-primary:hover       { background: var(--primary-dark); }
+
+.bilt-btn:disabled {
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.bilt-btn-contained:disabled {
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Ripple */
+.bilt-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: bilt-ripple-expand 550ms linear;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+@keyframes bilt-ripple-expand {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ─────────────────────────────────────────
+   Address Form
+───────────────────────────────────────── */
+.bilt-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 40px 48px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bilt-form-heading {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.03em;
+}
+
+.bilt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bilt-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.bilt-form-full-width {
+  width: 100%;
+}
+
+.bilt-form-full-width input {
+  width: 100%;
+}
+
+#bilt-form-zip {
+  min-width: 100px;
+  max-width: 120px;
+}
+
+/* TextField wrapper */
+.bilt-text-field {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.bilt-text-field input {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 16.5px 14px;
+  width: 100%;
+  cursor: text;
+  caret-color: #1976d2;
+}
+
+.bilt-text-field input::placeholder {
+  color: rgba(0, 0, 0, 0.42);
+  opacity: 1;
+}
+
+.bilt-text-field fieldset {
+  position: absolute;
+  inset: -5px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding: 0 8px;
+  pointer-events: none;
+  transition: border-color 0.15s ease, border-width 0.15s ease;
+  margin: 0;
+}
+
+.bilt-text-field fieldset legend {
+  display: block;
+  visibility: hidden;
+  height: 11px;
+  font-size: 0.75em;
+  max-width: 0.01px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  transition: max-width 0.1s cubic-bezier(0, 0, 0.2, 1) 50ms;
+}
+
+.bilt-text-field label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  transform-origin: left top;
+  transition:
+    top 0.2s cubic-bezier(0, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0, 0, 0.2, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100% - 28px);
+  text-overflow: ellipsis;
+}
+
+/* Shrunk state */
+.bilt-text-field.bilt-shrunk label,
+.bilt-text-field input:focus ~ label {
+  top: 0;
+  transform: translateY(-50%) scale(0.75);
+  left: 14px;
+}
+
+.bilt-text-field.bilt-shrunk fieldset legend,
+.bilt-text-field input:focus ~ fieldset legend {
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+/* Hover */
+.bilt-text-field:not(.bilt-disabled):hover fieldset {
+  border-color: rgba(0, 0, 0, 0.87);
+}
+
+/* Focus */
+.bilt-text-field input:focus ~ fieldset {
+  border: 2px solid #1976d2;
+}
+
+.bilt-text-field input:focus ~ label,
+.bilt-text-field.bilt-shrunk input:focus ~ label {
+  color: #1976d2;
+}
+
+/* Error */
+.bilt-text-field.bilt-error fieldset {
+  border-color: #d32f2f;
+}
+
+.bilt-text-field.bilt-error label {
+  color: #d32f2f;
+}
+
+.bilt-text-field.bilt-error:hover fieldset {
+  border-color: #d32f2f;
+}
+
+.bilt-text-field.bilt-error input:focus ~ fieldset {
+  border: 2px solid #d32f2f;
+}
+
+.bilt-text-field.bilt-error input:focus ~ label {
+  color: #d32f2f;
+}
+
+.bilt-text-field.bilt-error input {
+  caret-color: #d32f2f;
+}
+
+.bilt-select-field.bilt-error fieldset {
+  border-color: #d32f2f;
+}
+
+.bilt-select-field.bilt-error label {
+  color: #d32f2f;
+}
+
+.bilt-helper-text {
+  font-size: 0.75rem;
+  line-height: 1.66;
+  color: #d32f2f;
+  margin: 3px 14px 0;
+  display: none;
+}
+
+.bilt-text-field.bilt-error + .bilt-helper-text,
+.bilt-select-field.bilt-error + .bilt-helper-text {
+  display: block;
+}
+
+/* Select control */
+.bilt-select-field {
+  min-width: 160px;
+}
+
+.bilt-select-field .bilt-select {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 16.5px 32px 16.5px 14px;
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.bilt-select-field .bilt-select-placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+
+.bilt-select-icon {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.bilt-select-field.bilt-open .bilt-select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.bilt-select:focus ~ fieldset,
+.bilt-select-field.bilt-open fieldset {
+  border: 2px solid #1976d2;
+}
+
+.bilt-select:focus ~ label,
+.bilt-select-field.bilt-open label {
+  color: #1976d2;
+}
+
+.bilt-select-field.bilt-open label,
+.bilt-select-field.bilt-shrunk label {
+  top: 0;
+  transform: translateY(-50%) scale(0.75);
+  left: 14px;
+}
+
+.bilt-select-field.bilt-open fieldset legend,
+.bilt-select-field.bilt-shrunk fieldset legend {
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+.bilt-select-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1300;
+  list-style: none;
+  padding: 8px 0;
+}
+
+.bilt-select-field.bilt-open .bilt-select-menu {
+  display: block;
+}
+
+.bilt-select-option {
+  padding: 6px 16px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.bilt-select-option:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.bilt-select-option.bilt-selected {
+  background: rgba(25, 118, 210, 0.08);
+  color: #1976d2;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+   Review Section
+───────────────────────────────────────── */
+.bilt-review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bilt-review-section[hidden] {
+  display: none;
+}
+
+.bilt-review-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 40px 48px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bilt-review-body {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.bilt-review-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.bilt-review-photo img {
+  width: 220px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #a1ce57;
+}
+
+.bilt-review-photo span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.bilt-review-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.bilt-review-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bilt-review-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.bilt-review-value {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.87);
+}

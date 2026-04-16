@@ -16,7 +16,7 @@ body {
   justify-content: center;
 }
 
-.demo {
+.bilt-demo {
   background: #fff;
   padding: 48px 56px;
   border-radius: 8px;
@@ -27,7 +27,7 @@ body {
   min-width: 360px;
 }
 
-.demo h2 {
+.bilt-demo h2 {
   font-size: 1.1rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
@@ -35,7 +35,7 @@ body {
   margin-bottom: -8px;
 }
 
-.row {
+.bilt-row {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
@@ -43,7 +43,7 @@ body {
 }
 
 /* TextField wrapper */
-.mui-text-field {
+.bilt-text-field {
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -51,9 +51,9 @@ body {
 }
 
 /* Input */
-.mui-text-field input {
+.bilt-text-field input {
   font-family: inherit;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   line-height: 1.4375em;
   color: rgba(0, 0, 0, 0.87);
   background: transparent;
@@ -65,15 +65,15 @@ body {
   caret-color: #1976d2;
 }
 
-.mui-text-field input::placeholder {
+.bilt-text-field input::placeholder {
   color: rgba(0, 0, 0, 0.42);
   opacity: 1;
 }
 
 /* Fieldset */
-.mui-text-field fieldset {
+.bilt-text-field fieldset {
   position: absolute;
-  inset: -5px 0 0; /* -5px top so legend sits on border */
+  inset: -5px 0 0;
   border: 1px solid rgba(0, 0, 0, 0.23);
   border-radius: 4px;
   padding: 0 8px;
@@ -85,12 +85,12 @@ body {
 }
 
 /* Legend */
-.mui-text-field fieldset legend {
+.bilt-text-field fieldset legend {
   display: block;
   visibility: hidden;
   height: 11px;
-  font-size: 0.75em; /* 12px when input is 16px */
-  max-width: 0.01px; /* collapsed by default (label is inside) */
+  font-size: 0.75em;
+  max-width: 0.01px;
   white-space: nowrap;
   overflow: hidden;
   padding: 0;
@@ -98,7 +98,7 @@ body {
 }
 
 /* Floating label */
-.mui-text-field label {
+.bilt-text-field label {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -120,120 +120,120 @@ body {
 }
 
 /* Shrunk state */
-.mui-text-field.shrunk label,
-.mui-text-field input:focus ~ label {
+.bilt-text-field.bilt-shrunk label,
+.bilt-text-field input:focus ~ label {
   top: 0;
   transform: translateY(-50%) scale(0.75);
   left: 14px;
 }
 
-.mui-text-field.shrunk fieldset legend,
-.mui-text-field input:focus ~ fieldset legend {
-  max-width: 100%; /* open the gap */
+.bilt-text-field.bilt-shrunk fieldset legend,
+.bilt-text-field input:focus ~ fieldset legend {
+  max-width: 100%;
   padding: 0 4px;
 }
 
 /* Hover */
-.mui-text-field:not(.disabled):hover fieldset {
+.bilt-text-field:not(.bilt-disabled):hover fieldset {
   border-color: rgba(0, 0, 0, 0.87);
 }
 
 /* Focus */
-.mui-text-field input:focus ~ fieldset {
+.bilt-text-field input:focus ~ fieldset {
   border: 2px solid #1976d2;
 }
 
-.mui-text-field input:focus ~ label,
-.mui-text-field.shrunk input:focus ~ label {
+.bilt-text-field input:focus ~ label,
+.bilt-text-field.bilt-shrunk input:focus ~ label {
   color: #1976d2;
 }
 
 /* Error */
-.mui-text-field.error fieldset {
+.bilt-text-field.bilt-error fieldset {
   border-color: #d32f2f;
 }
 
-.mui-text-field.error label {
+.bilt-text-field.bilt-error label {
   color: #d32f2f;
 }
 
-.mui-text-field.error:hover fieldset {
+.bilt-text-field.bilt-error:hover fieldset {
   border-color: #d32f2f;
 }
 
-.mui-text-field.error input:focus ~ fieldset {
+.bilt-text-field.bilt-error input:focus ~ fieldset {
   border: 2px solid #d32f2f;
 }
 
-.mui-text-field.error input:focus ~ label {
+.bilt-text-field.bilt-error input:focus ~ label {
   color: #d32f2f;
 }
 
-.mui-text-field.error input {
+.bilt-text-field.bilt-error input {
   caret-color: #d32f2f;
 }
 
 /* Disabled */
-.mui-text-field.disabled {
+.bilt-text-field.bilt-disabled {
   pointer-events: none;
 }
 
-.mui-text-field.disabled input {
+.bilt-text-field.bilt-disabled input {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
 }
 
-.mui-text-field.disabled fieldset {
+.bilt-text-field.bilt-disabled fieldset {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.mui-text-field.disabled label {
+.bilt-text-field.bilt-disabled label {
   color: rgba(0, 0, 0, 0.38);
 }
 
 /* Helper text */
-.mui-helper-text {
+.bilt-helper-text {
   font-size: 0.75rem;
   line-height: 1.66;
   color: rgba(0, 0, 0, 0.6);
   margin: 3px 14px 0;
 }
 
-.mui-helper-text.error-text {
+.bilt-helper-text.bilt-error-text {
   color: #d32f2f;
 }
 
 /* Small */
-.mui-text-field.small input {
+.bilt-text-field.bilt-small input {
   padding: 8.5px 14px;
   font-size: 0.875rem;
 }
 
-.mui-text-field.small label {
+.bilt-text-field.bilt-small label {
   font-size: 0.875rem;
   top: 50%;
 }
 
-.mui-text-field.small.shrunk label,
-.mui-text-field.small input:focus ~ label {
+.bilt-text-field.bilt-small.bilt-shrunk label,
+.bilt-text-field.bilt-small input:focus ~ label {
   top: 0;
-  transform: translateY(-50%) scale(0.857); /* 12/14 */
+  transform: translateY(-50%) scale(0.857);
 }
 
 /* Divider */
-.section-divider {
+.bilt-section-divider {
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   margin: 0;
 }
 
 /* Select control */
-.mui-select-field {
+.bilt-select-field {
   min-width: 240px;
 }
 
-.mui-select-field .mui-select {
+.bilt-select-field .bilt-select {
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.4375em;
@@ -248,11 +248,11 @@ body {
   outline: none;
 }
 
-.mui-select-field .mui-select-placeholder {
+.bilt-select-field .bilt-select-placeholder {
   color: rgba(0, 0, 0, 0.42);
 }
 
-.mui-select-icon {
+.bilt-select-icon {
   position: absolute;
   right: 7px;
   top: 50%;
@@ -264,36 +264,36 @@ body {
   align-items: center;
 }
 
-.mui-select-field.open .mui-select-icon {
+.bilt-select-field.bilt-open .bilt-select-icon {
   transform: translateY(-50%) rotate(180deg);
 }
 
 /* Open / focus states for select */
-.mui-select:focus ~ fieldset,
-.mui-select-field.open fieldset {
+.bilt-select:focus ~ fieldset,
+.bilt-select-field.bilt-open fieldset {
   border: 2px solid #1976d2;
 }
 
-.mui-select:focus ~ label,
-.mui-select-field.open label {
+.bilt-select:focus ~ label,
+.bilt-select-field.bilt-open label {
   color: #1976d2;
 }
 
-.mui-select-field.open label,
-.mui-select-field.shrunk label {
+.bilt-select-field.bilt-open label,
+.bilt-select-field.bilt-shrunk label {
   top: 0;
   transform: translateY(-50%) scale(0.75);
   left: 14px;
 }
 
-.mui-select-field.open fieldset legend,
-.mui-select-field.shrunk fieldset legend {
+.bilt-select-field.bilt-open fieldset legend,
+.bilt-select-field.bilt-shrunk fieldset legend {
   max-width: 100%;
   padding: 0 4px;
 }
 
 /* Dropdown menu */
-.mui-select-menu {
+.bilt-select-menu {
   display: none;
   position: absolute;
   top: calc(100% + 4px);
@@ -312,11 +312,11 @@ body {
   padding: 8px 0;
 }
 
-.mui-select-field.open .mui-select-menu {
+.bilt-select-field.bilt-open .bilt-select-menu {
   display: block;
 }
 
-.mui-select-option {
+.bilt-select-option {
   padding: 6px 16px;
   min-height: 48px;
   display: flex;
@@ -326,38 +326,38 @@ body {
   transition: background 0.1s ease;
 }
 
-.mui-select-option:hover {
+.bilt-select-option:hover {
   background: rgba(0, 0, 0, 0.04);
 }
 
-.mui-select-option.selected {
+.bilt-select-option.bilt-selected {
   background: rgba(25, 118, 210, 0.08);
   color: #1976d2;
   font-weight: 500;
 }
 
 /* Form layout */
-.form {
+.bilt-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.form-full-width {
+.bilt-form-full-width {
   width: 100%;
 }
 
-.form-full-width input {
+.bilt-form-full-width input {
   width: 100%;
 }
 
-#form-zip {
+#bilt-form-zip {
   min-width: 100px;
   max-width: 120px;
 }
 
 /* MUI contained button */
-.mui-btn {
+.bilt-btn {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -379,7 +379,7 @@ body {
     box-shadow 0.25s ease;
 }
 
-.mui-btn:hover {
+.bilt-btn:hover {
   background: #1565c0;
   box-shadow:
     0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -387,7 +387,7 @@ body {
     0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.mui-btn:active {
+.bilt-btn:active {
   background: #1565c0;
   box-shadow:
     0px 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -396,20 +396,20 @@ body {
 }
 
 /* Disabled select */
-.mui-select-field.disabled .mui-select {
+.bilt-select-field.bilt-disabled .bilt-select {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
   pointer-events: none;
 }
 
-.mui-select-field.disabled fieldset {
+.bilt-select-field.bilt-disabled fieldset {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.mui-select-field.disabled label {
+.bilt-select-field.bilt-disabled label {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.mui-select-field.disabled .mui-select-icon {
+.bilt-select-field.bilt-disabled .bilt-select-icon {
   color: rgba(0, 0, 0, 0.38);
 }
